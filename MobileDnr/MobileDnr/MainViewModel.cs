@@ -32,6 +32,7 @@ namespace MobileDnr
 
         private void Current_MediaItemFinished(object sender, MediaManager.Media.MediaItemEventArgs e)
         {
+            CurrentStatus = "";
             IsPlaying = false;
         }
 

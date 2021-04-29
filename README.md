@@ -287,11 +287,11 @@ The UI isn't pretty, but this is basic XAML stuff here. I have no doubt that eve
 
 When I run the app on my Android phone, it looks like this:
 
-![image-20210428130407839](C:\Users\carl\AppData\Roaming\Typora\typora-user-images\image-20210428130407839.png)
+![image-20210428130407839](https://pwop6300.blob.core.windows.net/thedotnetshow/Shot1.png)
 
 When I press the `Play` button, after a pause for downloading, I see this:
 
-![image-20210428130456093](C:\Users\carl\AppData\Roaming\Typora\typora-user-images\image-20210428130456093.png)
+![image-20210428130456093](https://pwop6300.blob.core.windows.net/thedotnetshow/Shot2.png)
 
 Pressing the `Stop` button stops the audio and reverts the UI back to it's original state.
 
@@ -324,6 +324,7 @@ Let's also handle the `CrossMediaManager`'s  `MediaItemFinished` event to so we 
 ```c#
 private void Current_MediaItemFinished(object sender, MediaManager.Media.MediaItemEventArgs e)
 {
+    CurrentStatus = "";
     IsPlaying = false;
 }
 ```
@@ -349,6 +350,17 @@ private async Task PerformPlay()
 }
 ```
 
+We'll also make sure to clear `CurrentStatus` after hitting the `Stop` button:
+
+```c#
+protected async Task PerformStop()
+{
+    IsPlaying = false;
+    CurrentStatus = "";
+    await CrossMediaManager.Current.Stop();
+}
+```
+
 Now, in *MainPage.xaml* let's add a label underneath the buttons:
 
 ```xaml
@@ -359,11 +371,11 @@ That should do it! See how easy it is to add features once you are set up and ru
 
 Here's a shot of my Android phone after clicking `Play` but before playing starts:
 
-![image-20210428133500172](C:\Users\carl\AppData\Roaming\Typora\typora-user-images\image-20210428133500172.png)
+![image-20210428133500172](https://pwop6300.blob.core.windows.net/thedotnetshow/Shot3.png)
 
 And then after it starts playing:
 
-![image-20210428133513264](C:\Users\carl\AppData\Roaming\Typora\typora-user-images\image-20210428133513264.png)
+![image-20210428133513264](https://pwop6300.blob.core.windows.net/thedotnetshow/Shot4.png)
 
 There's obviously a lot more to this app than playing an mp3 file. In the next section we will cache the mp3 file so it will play even if offline, and then we'll get a list of mp3 files (with their metadata) from an RSS feed.
 
