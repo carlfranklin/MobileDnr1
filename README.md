@@ -2,6 +2,12 @@
 
 ###### Building a Mobile Podcast App Part 1
 
+See more projects at https://github.com/carlfranklin/DotNetShow
+
+Watch the video at https://youtu.be/xTTbvUFog3w
+
+All episodes are listed at https://thedotnetshow.com
+
 ## Overview
 
 In the next few episodes of The .NET Show, I will build a mobile podcast app for my podcast, .NET Rocks! using Xamarin Forms. We had hired an outside company to build our podcast app years ago, but they are no longer available. 
